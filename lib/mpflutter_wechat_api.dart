@@ -2576,14 +2576,6 @@ class AuthSetting {
     return $$context$$["scope.writePhotosAlbum"];
   }
 
-  set scope_userFuzzyLocation(bool? value) {
-    $$context$$["scope_userFuzzyLocation"] = value;
-  }
-
-  bool? get scope_userFuzzyLocation {
-    return $$context$$["scope.userFuzzyLocation"];
-  }
-
   AuthSetting({mpjs.JSObject? $$context$$}) {
     this.$$context$$ = $$context$$ ?? mpjs.JSObject("Object");
   }
@@ -18958,30 +18950,6 @@ class OpenDocumentOption {
 
   OpenDocumentOption({mpjs.JSObject? $$context$$}) {
     this.$$context$$ = $$context$$ ?? mpjs.JSObject("Object");
-  }
-}
-
-class OpenOfficialAccountProfileOption {
-  late mpjs.JSObject $$context$$;
-
-  set username(String value) {
-    $$context$$["username"] = value;
-  }
-
-  String get username {
-    return $$context$$["username"];
-  }
-}
-
-class OpenOfficialAccountArticleOption {
-  late mpjs.JSObject $$context$$;
-
-  set url(String value) {
-    $$context$$["url"] = value;
-  }
-
-  String get url {
-    return $$context$$["url"];
   }
 }
 
@@ -36814,22 +36782,6 @@ class Wx {
     return GeneralCallbackResult($$context$$: result);
   }
 
-  GeneralCallbackResult openOfficialAccountProfile<T extends OpenOfficialAccountProfileOption>(
-      [T? option]) {
-    final result =
-        $$context$$.callMethod('openOfficialAccountProfile', [option?.$$context$$]);
-
-    return GeneralCallbackResult($$context$$: result);
-  }
-
-  GeneralCallbackResult openOfficialAccountArticle<T extends OpenOfficialAccountArticleOption>(
-      [T? option]) {
-    final result =
-        $$context$$.callMethod('openOfficialAccountArticle', [option?.$$context$$]);
-
-    return GeneralCallbackResult($$context$$: result);
-  }
-
   GeneralCallbackResult exitVoIPChat<T extends ExitVoIPChatOption>(
       [T? option]) {
     final result =
@@ -37124,6 +37076,12 @@ class Wx {
     final result = $$context$$.callMethod('getUserInfo', [option.$$context$$]);
 
     return GetUserInfoSuccessCallbackResult($$context$$: result);
+  }
+
+  dynamic requestMerchantTransfer(RequestMerchantTransferOption option) {
+    final result =
+        $$context$$.callMethod('requestMerchantTransfer', [option.$$context$$]);
+    return result;
   }
 
   GetUserProfileSuccessCallbackResult
@@ -39956,6 +39914,14 @@ typedef GetUserInfoFailCallback = void Function(GeneralCallbackResult);
 typedef GetUserInfoSuccessCallback = void Function(
     GetUserInfoSuccessCallbackResult);
 
+typedef RequestMerchantTransferCompleteCallback = void Function(
+    GeneralCallbackResult);
+
+typedef RequestMerchantTransferFailCallback = void Function(
+    GeneralCallbackResult);
+
+typedef RequestMerchantTransferSuccessCallback = void Function(dynamic);
+
 typedef GetUserProfileCompleteCallback = void Function(GeneralCallbackResult);
 
 typedef GetUserProfileFailCallback = void Function(GeneralCallbackResult);
@@ -41975,6 +41941,68 @@ class GetPrivacySettingSuccessCallbackResult {
   }
 
   GetPrivacySettingSuccessCallbackResult({mpjs.JSObject? $$context$$}) {
+    this.$$context$$ = $$context$$ ?? mpjs.JSObject("Object");
+  }
+}
+
+class RequestMerchantTransferOption {
+  late mpjs.JSObject $$context$$;
+
+  set complete(RequestMerchantTransferCompleteCallback? value) {
+    $$context$$["complete"] = (res) {
+      value?.call(GeneralCallbackResult($$context$$: res));
+    };
+  }
+
+  RequestMerchantTransferCompleteCallback? get complete {
+    return complete;
+  }
+
+  set fail(RequestMerchantTransferFailCallback? value) {
+    $$context$$["fail"] = (res) {
+      value?.call(GeneralCallbackResult($$context$$: res));
+    };
+  }
+
+  RequestMerchantTransferFailCallback? get fail {
+    return fail;
+  }
+
+  set mchId(dynamic? value) {
+    $$context$$["mchId"] = value;
+  }
+
+  dynamic? get mchId {
+    return $$context$$["mchId"];
+  }
+
+  set appId(dynamic? value) {
+    $$context$$["appId"] = value;
+  }
+
+  dynamic? get appId {
+    return $$context$$["appId"];
+  }
+
+  set package(dynamic? value) {
+    $$context$$["package"] = value;
+  }
+
+  dynamic? get package {
+    return $$context$$["package"];
+  }
+
+  set success(RequestMerchantTransferSuccessCallback? value) {
+    $$context$$["success"] = (result) {
+      value?.call(result);
+    };
+  }
+
+  RequestMerchantTransferSuccessCallback? get success {
+    return success;
+  }
+
+  RequestMerchantTransferOption({mpjs.JSObject? $$context$$}) {
     this.$$context$$ = $$context$$ ?? mpjs.JSObject("Object");
   }
 }
